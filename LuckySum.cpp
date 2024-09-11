@@ -9,12 +9,12 @@ int main()
     queue<ll>q;
     q.push(4);
 	q.push(7);
-    for(ll i=l;i<=r;)
+    while(l<=r)
     {
-        if(i<=q.front())
+        if(l<=q.front())
         {
             ans+=q.front();
-            i++;
+            l++;
         }
         else
         {
