@@ -15,8 +15,8 @@ int main() {
     int pos3 = reverse_s.find(seq1);
     int pos4 = reverse_s.find(seq2, pos3 + seq1.length());
 
-    bool forward = (pos1 != string::npos && pos2 != string::npos);  // Can appear from A to B
-    bool backward = (pos3 != string::npos && pos4 != string::npos); // Can appear from B to A
+    bool forward = (pos1 != -1 && pos2 != -1);  // Can appear from A to B
+    bool backward = (pos3 != -1 && pos4 != -1); // Can appear from B to A
 
     if (forward && backward)
         cout << "both" << endl;
