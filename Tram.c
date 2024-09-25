@@ -12,4 +12,5 @@ int main()
             max=passengers;
     }
     printf("%d",max);
+    return 0;
 }
