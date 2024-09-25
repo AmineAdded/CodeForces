@@ -24,5 +24,4 @@ int main()
             occ3++;
     }
     printf("%lld",n-max(occ1,occ2,occ3));
-    return 0;
 }
