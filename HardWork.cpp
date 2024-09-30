@@ -40,12 +40,6 @@ int main()
             cout<<"ACC"<<endl;
         else
             cout<<"WA"<<endl;
-        
     }
-
-
-    
-
-    
-
+    return 0;
 }
