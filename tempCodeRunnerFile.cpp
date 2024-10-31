@@ -1,20 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define ll long long
+long long combinaison(ll n, ll k) {
+    if (k > n) return 0;
+    if (k == 0 || k == n) return 1;
+    if (k > n - k) k = n - k; // Utiliser la propriété C(n, k) = C(n, n - k)
+    
+    long long result = 1;
+    for (int i = 0; i < k; ++i) {
+        result *= (n - i);
+        result /= (i + 1);
+    }
+    return result;
+}
 int main(){
-    string s;
-    int hour,minutes;
-    double x,y,xHour,yHour;
-    xHour=30;
-    yHour=6;
-    cin>>s;
-    hour=stoi(s.substr(0,2));
-    minutes=stoi(s.substr(3,5));
-    if(hour+12<24){
-        x=((hour+12)-12)*30+(minutes*30.0)/60;
+    ll n,ans=0,number;
+    map<ll,ll>M;
+    cin>>n;
+    ans+=n;
+    for(ll i=0;i<n;i++){
+        cin>>number;
+        M[number]++;
     }
-    else{
-        x=(hour-12)*30+(minutes*30.0)/60;
+    for(auto it=M.begin();it!=M.end();it++){
+        ans+=combinaison(it->second,2);
     }
-    y=minutes*6;
-     cout<<x<<" "<<y<<endl;
+
+    cout<<ans<<endl;
+
 }

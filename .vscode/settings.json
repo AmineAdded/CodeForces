@@ -59,5 +59,6 @@
   "files.associations": {
     "*.embeddedhtml": "html",
     "iostream": "cpp"
-  }
+  },
+  "C_Cpp.errorSquiggles": "enabled"
 }
