@@ -9,6 +9,7 @@ int main()
     int ans1 = 0, ans2 = 0;
 
     // un cycle complet, c'est le ppcm le plus petit multiple pour que s1 revient à 0 et s2 revient à 0
+    // c'est sur que après m*k (ppcm), Shadow et sonic reviennent à 0
     int cycle = s1.size() * s2.size(); // <<<<< correction ici
     int i = 0, j = 0;
     int length1 = cycle;
