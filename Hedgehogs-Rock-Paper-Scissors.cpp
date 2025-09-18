@@ -4,18 +4,16 @@ int main()
 {
     long long n;
     cin >> n;
-    int round = n;
     string s1, s2;
     cin >> s1 >> s2;
-    // compter combien de cycle
     int ans1 = 0, ans2 = 0;
-    int length1 = max(s1.size(), s2.size());
+
+    // un cycle complet, c'est le ppcm le plus petit multiple pour que s1 revient à 0 et s2 revient à 0
+    int cycle = s1.size() * s2.size(); // <<<<< correction ici
     int i = 0, j = 0;
+    int length1 = cycle;
     while (length1--)
     {
-        round--;
-        if (j >= s2.length())
-            j = 0;
         if (s1[i] == 'S' && s2[j] == 'R')
             ans1++;
         else if (s1[i] == 'P' && s2[j] == 'S')
@@ -28,42 +26,34 @@ int main()
             ans2++;
         else if (s1[i] == 'P' && s2[j] == 'R')
             ans2++;
-        i++;
-        j++;
-    }
-    int leftRound = (n - max(s1.size(), s2.size())) / max(s1.size(), s2.size());
-    ans1 += leftRound * ans1;
-    ans2 += leftRound * ans2;
-    int lastRound = (n - max(s1.size(), s2.size())) % max(s1.size(), s2.size());
-    i = 0, j = 0;
-    if (lastRound <= 0)
-    {
-        if (s1.size() > s2.size())
-            cout << ans1 << " " << ans2 << endl;
-        else
-            cout << ans2 << " " << ans1 << endl;
-        return 0;
-    }
-    while (lastRound--)
-    {
-        if (s1[i] == 'S' && s2[j] == 'R')
-            ans1++;
-        else if (s1[i] == 'P' && s2[j] == 'S')
-            ans1++;
-        else if (s1[i] == 'R' && s2[j] == 'P')
-            ans1++;
-        else if (s1[i] == 'R' && s2[j] == 'S')
-            ans2++;
-        else if (s1[i] == 'S' && s2[j] == 'P')
-            ans2++;
-        else if (s1[i] == 'P' && s2[j] == 'R')
-            ans2++;
-        i++;
-        j++;
+        i = (i + 1) % s1.size();
+        j = (j + 1) % s2.size();
     }
 
-    if (s1.size() > s2.size())
-        cout << ans1 << " " << ans2 << endl;
-    else
-        cout << ans2 << " " << ans1 << endl;
+    long long fullCycles = n / cycle;
+    long long rest = n % cycle;
+
+    long long res1 = fullCycles * ans1;
+    long long res2 = fullCycles * ans2;
+
+    i = 0, j = 0;
+    while (rest--)
+    {
+        if (s1[i] == 'S' && s2[j] == 'R')
+            res1++;
+        else if (s1[i] == 'P' && s2[j] == 'S')
+            res1++;
+        else if (s1[i] == 'R' && s2[j] == 'P')
+            res1++;
+        else if (s1[i] == 'R' && s2[j] == 'S')
+            res2++;
+        else if (s1[i] == 'S' && s2[j] == 'P')
+            res2++;
+        else if (s1[i] == 'P' && s2[j] == 'R')
+            res2++;
+        i = (i + 1) % s1.size();
+        j = (j + 1) % s2.size();
+    }
+
+    cout << res1 << " " << res2 << endl;
 }
