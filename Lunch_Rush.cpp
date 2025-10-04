@@ -10,15 +10,15 @@ int main(){
     int n,k;
     cin>>n>>k;
     Lunch_Rush a[n];
-    long long max=-1e20;
+    long long ans=-1e18;
     for(int i=0;i<n;i++){
         cin>>a[i].f>>a[i].t;
         if(a[i].t<=k){
-            max=a[i].f;
+            ans=max(ans,(long long)a[i].f);
         }
         else{
-            if(a[i].f-(a[i].t-k) > max) max=a[i].f-(a[i].t-k);
+            if(a[i].f-(a[i].t-k) > ans) ans=a[i].f-(a[i].t-k);
         }
     }
-    cout<<max;
+    cout<<ans;
 }
