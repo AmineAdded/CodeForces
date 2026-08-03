@@ -2,8 +2,9 @@
 using namespace std;
 int main(){
     int n,m;
-    vector<int> birds(n);
     cin >> n;
+    vector<int> birds(n);
+    
     for (int i=0;i<n;i++) cin >> birds[i];
     cin >> m;
 
